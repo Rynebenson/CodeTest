@@ -1,27 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 import Form from './form';
 import { debounce } from '../../utils';
 
+const GET_CHEESES = gql`
+    query specials($zip: String) {
+        specials(filter: $zip) {
+            _id
+            cheese {
+                _id
+                name
+                country
+                price
+            }
+            zip
+            percent_discount
+            out_of_stock
+        }
+    }
+`;
+
 export default function GetZipCode() {
-    const [zipCode, setZipCode] = useState("");
+    const [zipCode, setZipCode] = useState(""),
+          [fetchCheeses, { called, loading, data }] = useLazyQuery(GET_CHEESES)
 
     useEffect(() => {
         document.title = `Where are you located?`;
     }, [])
 
     /**
+     * Verify is zip code is in service area
+     * 
+     * @param {String} value
+     */
+    const verify = useCallback(
+        // debounce zip code input
+        debounce(async (value) => {
+            fetchCheeses({ variables: { zip: value } })
+        }, 400), []
+    )
+
+    /**
      * Handle Zip Code OnChange
      * 
-     * 
+     * @param {*} event
+     * @param {String} value // contains zip code
      */
     function handleZipChange(event) {
-        let { value } = event.target;
+        let { value } = event.target
 
         setZipCode(value)
-
-        debounce(async (value) => {
-            
-        })
+        verify(value)
     }
 
     /**
@@ -33,6 +63,10 @@ export default function GetZipCode() {
         event.preventDefault()
 
         alert('submit')
+    }
+
+    if(called) {
+        console.log(data)
     }
 
     return (
