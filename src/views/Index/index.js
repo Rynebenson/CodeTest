@@ -15,7 +15,7 @@ export default function Index() {
     return (
         <Wrapper>
             <div className="index">
-
+                <h1>{state.zip}</h1>
             </div>
         </Wrapper>
     )
