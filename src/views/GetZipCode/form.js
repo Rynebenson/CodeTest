@@ -1,4 +1,6 @@
 import React from 'react';
+import { RiCloseCircleLine, RiCheckboxCircleLine } from 'react-icons/ri';
+import { BsFillCaretUpFill } from 'react-icons/bs';
 
 export default function Form(props) {
     return (
@@ -12,6 +14,22 @@ export default function Form(props) {
                     placeholder="Zip Code"
                     autoComplete="off"
                 />
+                {
+                    props.called &&
+                        props.data ?
+                            props.data.specials.length > 0 ? (
+                                <i className="valid"><RiCheckboxCircleLine /></i>
+                            ) : (
+                                <i className="invalid"><RiCloseCircleLine />
+                                    <div className="dropdown">
+                                        <div className="triangle"><BsFillCaretUpFill /></div>
+                                        <p>Sorry, your location is not currently in our service area!</p>
+                                    </div>
+                                </i>
+                            )
+                            :
+                            null
+                }
                 <button className={`submit${props.zipCode ? ' active' : ''}`} disabled={props.zipCode ? false : true}>Continue</button>
             </div>
             <p>Enter your zip code to find out which cheeses may be available near you.</p>

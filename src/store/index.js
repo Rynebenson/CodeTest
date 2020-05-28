@@ -3,6 +3,7 @@ import { Reducer } from "./reducer"
 import Cookies from "universal-cookie"
 
 const initialState = {
+    loading: true,
     zip: null
 }
 
@@ -15,16 +16,19 @@ export default (props) => {
 
     useEffect(() => {
         async function checkZip() {
-            console.log('checkZip is called')
+            console.log(zip)
 
             if(zip) {
-                console.log(zip); return
+                dispatch({ type: "UPDATE_ZIP", payload: zip }); return;
             }
+
+            dispatch({ type: "UPDATE_LOADING", payload: false })
         }
 
         checkZip()
     }, [zip])
 
+    if(state.loading) return <div></div>
     return (
         <Store.Provider value={[state, dispatch]}>
             { props.children }

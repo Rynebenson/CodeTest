@@ -1,22 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Store } from '../../store';
 import Wrapper from '../../components/Wrapper';
 import GetZipCode from '../GetZipCode';
+import Header from '../../components/Header';
 
-export default function Index() {
+export default function Index(props) {
     const [state] = useContext(Store)
+
+    useEffect(() => {
+        document.title = "Frank's Fine Cheeses"
+    }, [])
 
     if(!state.zip) {
         return (
-            <GetZipCode />
+            <GetZipCode {...props} />
         )
     }
 
     return (
         <Wrapper>
-            <div className="index">
-                <h1>{state.zip}</h1>
-            </div>
+            <Header />
         </Wrapper>
     )
 }

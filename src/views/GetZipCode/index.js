@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { Store } from '../../store';
 import Form from './form';
 import { debounce } from '../../utils';
 
@@ -21,8 +22,9 @@ const GET_CHEESES = gql`
     }
 `;
 
-export default function GetZipCode() {
-    const [zipCode, setZipCode] = useState(""),
+export default function GetZipCode(props) {
+    const [state, dispatch] = useContext(Store),
+          [zipCode, setZipCode] = useState(""),
           [fetchCheeses, { called, loading, data }] = useLazyQuery(GET_CHEESES)
 
     useEffect(() => {
@@ -62,11 +64,12 @@ export default function GetZipCode() {
     async function handleSubmit(event) {
         event.preventDefault()
 
-        alert('submit')
-    }
+        if(!zipCode) return
+        if(!data) return
+        if(data.specials.length < 1) return
 
-    if(called) {
-        console.log(data)
+        dispatch({ type: "UPDATE_ZIP", payload: zipCode })
+        props.history.push("/")
     }
 
     return (
@@ -77,6 +80,9 @@ export default function GetZipCode() {
                     <h1>Frank's Fine Cheeses takes local sourcing to the next level!</h1>
                 </div>
                 <Form 
+                    called={called}
+                    loading={loading}
+                    data={data}
                     zipCode={zipCode}
                     handleZipChange={handleZipChange}
                     handleSubmit={handleSubmit}
