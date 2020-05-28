@@ -9,11 +9,12 @@ export default function Form(props) {
                     name="zipCode"
                     value={props.zipCode}
                     onChange={props.handleZipChange}
+                    placeholder="Zip Code"
                     autoComplete="off"
                 />
-                <button className="submit">Continue</button>
+                <button className={`submit${props.zipCode ? ' active' : ''}`} disabled={props.zipCode ? false : true}>Continue</button>
             </div>
-            <p>Enter your zip code and find out what cheese and discounts may be available to you.</p>
+            <p>Enter your zip code to find out which cheeses may be available near you.</p>
         </form>
     )
 }

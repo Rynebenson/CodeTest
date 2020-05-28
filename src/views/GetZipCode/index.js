@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Form from './form';
+import { debounce } from '../../utils';
 
 export default function GetZipCode() {
     const [zipCode, setZipCode] = useState("");
@@ -17,6 +18,10 @@ export default function GetZipCode() {
         let { value } = event.target;
 
         setZipCode(value)
+
+        debounce(async (value) => {
+            
+        })
     }
 
     /**
@@ -27,7 +32,7 @@ export default function GetZipCode() {
     async function handleSubmit(event) {
         event.preventDefault()
 
-        
+        alert('submit')
     }
 
     return (
