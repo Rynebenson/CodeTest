@@ -18,3 +18,9 @@ export function debounce(func, wait, immediate) {
 		if (call) func.apply(context, args);
 	};
 };
+
+export function calculate_price(price, percent_discount) {
+    let newPrice = price - (price * (percent_discount / 100))
+    
+    return newPrice.toFixed(2)
+}

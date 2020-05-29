@@ -23,7 +23,7 @@ const GET_CHEESES = gql`
 `;
 
 export default function GetZipCode(props) {
-    const [state, dispatch] = useContext(Store),
+    const [_, dispatch] = useContext(Store),
           [zipCode, setZipCode] = useState(""),
           [fetchCheeses, { called, loading, data }] = useLazyQuery(GET_CHEESES)
 
