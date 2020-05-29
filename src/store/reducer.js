@@ -12,8 +12,9 @@ export const Reducer = (state, action) => {
         case "ADD_TO_BASKET":
             return { ...state, basket: [action.payload, ...state.basket], whitelist: [action.payload._id, ...state.whitelist] }
         case "REMOVE_FROM_BASKET":
-            console.log(action.payload);
-            return state;
+            let clone = state.basket.filter(item => item._id !== action.payload);
+            
+            return { ...state, basket: clone }
         default:
             return state;
     }

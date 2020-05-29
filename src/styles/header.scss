@@ -54,6 +54,7 @@
             align-items: center;
 
             .icon {
+                position: relative;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -66,38 +67,36 @@
                 outline: none;
                 cursor: pointer;
                 transition: all .2s ease-in-out;
+
+                .notification {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    top: 0;
+                    right: 0;
+                    border: 2px solid #fff;
+                    border-radius: 100px;
+                    height: 20px;
+                    padding: 0 6px;
+                    background: red;
+                    color: #fff;
+                    font-family: sans-serif;
+                    font-size: 14px;
+                    opacity: 0;
+                    transform: scale(.5);
+                    transition: all .2s ease-in-out;
+                }
+                .notification.visible {
+                    opacity: 1;
+                    transform: scale(1);
+                }
             }
             .icon:hover {
                 background: $athens;
             }
             .icon.active {
                 background: $athens;
-            }
-
-            .dropdown {
-                position: absolute;
-                top: 95%;
-                right: 0;
-                border: 1px solid rgba(0, 0, 0, .08);
-                border-radius: 10px;
-                width: 400px;
-                padding: 10px 0;
-                box-shadow: 0 0 10px rgba(0, 0, 0, .08);
-                background: #fff;
-                opacity: 0;
-                transform: translateY(20px);
-                transition: all .2s ease-in-out;
-
-                .title {
-                    font-family: "Cera Pro", sans-serif;
-                    font-size: 24px;
-                    font-weight: bold;
-                    margin: 12px 16px;
-                }
-            }
-            .dropdown.visible {
-                opacity: 1;
-                transform: translateY(0);
             }
         }
     }

@@ -98,8 +98,7 @@
                 }
 
                 .button {
-                    display: flex;
-                    align-items: center;
+                    display: block;
                     margin: 30px auto 0;
                     padding: 0 20px;
                     border-radius: 100px;
@@ -110,6 +109,11 @@
                     cursor: pointer;
                     outline: none;
                     transition: all .2s ease-in-out;
+
+                    .container {
+                        display: flex;
+                        align-items: center;
+                    }
                     
                     i {
                         display: flex;

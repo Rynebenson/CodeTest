@@ -41,6 +41,7 @@ export default function Header() {
                         state={state}
                     />
                     <Cart 
+                        state={state}
                         cartNode={cartNode}
                         cartVisibility={cartVisibility}
                         setCartVisibility={setCartVisibility}

@@ -44,6 +44,8 @@ export default function Search(props) {
      * @param {Object} item
      */
     function addToBasket(data) {
+        if(props.state.whitelist.includes(data._id)) return
+        
         props.dispatch({ type: "ADD_TO_BASKET", payload: data });
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { calculate_price } from '../../utils';
-import { RiShoppingBasketLine } from 'react-icons/ri';
+import { RiShoppingBasketLine, RiCheckLine } from 'react-icons/ri';
 
 export default function Card(props) {
     return (
@@ -25,8 +25,19 @@ export default function Card(props) {
                         <p className="outOfStockMessage">Out of Stock</p>
                     ) : (
                         <button className={`button${props.state.whitelist.includes(props.data._id) ? ' active' : ''}`} onClick={() => props.addToBasket(props.data)}>
-                            <i><RiShoppingBasketLine /></i>
-                            <span>Add To Basket</span>
+                            {
+                                props.state.whitelist.includes(props.data._id) ? (
+                                    <div className="container">
+                                        <i><RiCheckLine /></i>
+                                        <span>Added To Basket</span>
+                                    </div>
+                                ) : (
+                                    <div className="container">
+                                        <i><RiShoppingBasketLine /></i>
+                                        <span>Add To Basket</span>
+                                    </div>
+                                )
+                            }
                         </button>
                     )
                 }

@@ -1,8 +1,18 @@
 import React, { useContext } from 'react';
 import { Store } from '../../store';
+import { calculate_price } from '../../utils';
 
 export default function Basket() {
     const [state, dispatch] = useContext(Store)
+
+    /**
+     * Handle removing item from basket
+     * 
+     * @param {Integer} index 
+     */
+    function handleRemove(id) {
+        dispatch({ type: "REMOVE_FROM_BASKET", payload: id });
+    }
 
     return (
         <div className={`basket`}>
@@ -15,8 +25,25 @@ export default function Basket() {
                             <div className="list">
                                 {
                                     state.basket.map((item, index) => (
-                                        <div key={index}>
-                                            {item.cheese.name}
+                                        <div className="item" key={index}>
+                                            <div className="row one">
+                                                <div className="">
+                                                    <h1 className="name">{item.cheese.name}</h1>
+                                                    <h2 className="country">{item.cheese.country}</h2>
+                                                </div>
+                                                <div>
+                                                <h3 className={`price${item.percent_discount > 0 ? ' discounted' : ''}`}>${item.cheese.price}</h3>
+                                                {
+                                                    item.percent_discount > 0 && (
+                                                        <h3 className="price">${calculate_price(item.cheese.price, item.percent_discount)}</h3>
+                                                    )
+                                                }
+                                                </div>
+                                                
+                                            </div>
+                                            <div className="row two">
+                                                <button className="remove" onClick={() => handleRemove(item._id)}>Remove</button>
+                                            </div>
                                         </div>
                                     ))
                                 }
