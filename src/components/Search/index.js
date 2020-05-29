@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { gql } from 'apollo-boost';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { RiSearchLine } from 'react-icons/ri';
 import Card from './card';
+import { debounce } from '../../utils';
 
 const GET_CHEESE = gql`
     query specials($zip: String) {
@@ -21,9 +22,27 @@ const GET_CHEESE = gql`
     }
 `;
 
+const SEARCH = gql`
+    query search($filter: String, $zip: String) {
+        search(filter: $filter, zip: $zip) {
+            _id
+            cheese {
+                _id
+                name
+                country
+                price
+            }
+            zip
+            percent_discount
+            out_of_stock
+        }
+    }
+`;
+
 export default function Search(props) {
     const [search, setSearch] = useState(""),
-          [fetchCheese, { loading, data }] = useLazyQuery(GET_CHEESE, { variables: { zip: props.state.zip } });
+          [fetchCheese, { loading, data }] = useLazyQuery(GET_CHEESE, { variables: { zip: props.state.zip } }),
+          [fetchSearch, { loading: searchLoading, data: searchData }] = useLazyQuery(SEARCH)
 
     useEffect(() => {
         fetchCheese()
@@ -36,7 +55,19 @@ export default function Search(props) {
      */
     function handleSearchChange(event) {
         setSearch(event.target.value)
+        query(event.target.value)
     }
+
+    /**
+     * 
+     * @param {*} data 
+     */
+    const query = useCallback(
+        debounce(value => {
+            console.log(value, props.state.zip)
+            fetchSearch({ variables: { filter: value, zip: props.state.zip } })
+        }, 500), []
+    )
 
     /**
      * Handle add to basket button click
@@ -47,6 +78,10 @@ export default function Search(props) {
         if(props.state.whitelist.includes(data._id)) return
         
         props.dispatch({ type: "ADD_TO_BASKET", payload: data });
+    }
+
+    if(searchData) {
+        console.log(searchData)
     }
 
     return (
