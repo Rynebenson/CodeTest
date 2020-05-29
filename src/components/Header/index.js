@@ -1,9 +1,8 @@
 import React, { useContext, useState, useRef, useEffect, useCallback } from 'react';
+import { Store } from '../../store';
 import Logo from './logo';
-import Search from './search';
 import ZipCode from './zipcode';
 import Cart from './cart';
-import { Store } from '../../store';
 
 export default function Header() {
     const [state] = useContext(Store),
@@ -37,15 +36,16 @@ export default function Header() {
         <header className="header">
             <nav className="nav">
                 <Logo />
-                <Search />
-                <ZipCode 
-                    state={state}
-                />
-                <Cart 
-                    cartNode={cartNode}
-                    cartVisibility={cartVisibility}
-                    setCartVisibility={setCartVisibility}
-                />
+                <div style={{display: "flex"}}>
+                    <ZipCode 
+                        state={state}
+                    />
+                    <Cart 
+                        cartNode={cartNode}
+                        cartVisibility={cartVisibility}
+                        setCartVisibility={setCartVisibility}
+                    />
+                </div>
             </nav>
         </header>
     )

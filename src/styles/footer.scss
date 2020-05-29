@@ -1,0 +1,55 @@
+.footer {
+    margin-top: 60px;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 10px 30px;
+
+        img {
+            height: 100px;
+        }
+
+        .nav {
+            a {
+                text-decoration: none;
+                font-family: "Cera Pro", sans-serif;
+                font-size: 16px;
+                font-size: normal;
+                margin: 0 30px;
+                color: lighten($black, 44);
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            a:nth-last-child(1) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        .container {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px 30px;
+
+            .nav {
+                
+                a {
+                    display: block;
+                    margin: 30px 0;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,22 @@
 @import "./colors.scss";
 @import "./zipcode.scss";
-@import "./header.scss";
 @import "./home.scss";
+@import "./basket.scss";
+@import "./search.scss";
+@import "./header.scss";
+@import "./footer.scss";
 @import "./animations.scss";
 
 body {
     margin: 0;
     background: #fff;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    min-height: calc(100vh - 200px);
+    max-width: 1080px;
+    margin: 30px auto 0;
+    padding: 0 30px;
 }

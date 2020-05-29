@@ -1,0 +1,25 @@
+.basket {
+    position: sticky;
+    top: 100px;
+    width: 400px;
+    border-left: 1px solid rgba(0, 0, 0, .05);
+
+    .container {
+        padding: 0 30px;
+
+        h1 {
+            font-family: "Cera Pro", sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .empty-message {
+            margin: 50px 0;
+            font-family: "Cera Pro", sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            color: $silver;
+        }
+    }
+}
