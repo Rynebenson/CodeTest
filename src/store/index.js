@@ -4,7 +4,9 @@ import Cookies from "universal-cookie"
 
 const initialState = {
     loading: true,
-    zip: null
+    zip: null,
+    basket: [],
+    whitelist: []
 }
 
 export const Store = createContext()

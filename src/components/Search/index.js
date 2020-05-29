@@ -23,8 +23,7 @@ const GET_CHEESE = gql`
 
 export default function Search(props) {
     const [search, setSearch] = useState(""),
-          [results, setResults] = useState([]),
-          [fetchCheese, { called, loading, data }] = useLazyQuery(GET_CHEESE, { variables: { zip: props.state.zip } });
+          [fetchCheese, { loading, data }] = useLazyQuery(GET_CHEESE, { variables: { zip: props.state.zip } });
 
     useEffect(() => {
         fetchCheese()
@@ -37,6 +36,15 @@ export default function Search(props) {
      */
     function handleSearchChange(event) {
         setSearch(event.target.value)
+    }
+
+    /**
+     * Handle add to basket button click
+     * 
+     * @param {Object} item
+     */
+    function addToBasket(data) {
+        props.dispatch({ type: "ADD_TO_BASKET", payload: data });
     }
 
     return (
@@ -63,7 +71,9 @@ export default function Search(props) {
                         data.specials.map(special => (
                             <Card
                                 key={special._id}
+                                state={props.state}
                                 data={special}
+                                addToBasket={addToBasket}
                             />
                         ))
                 }

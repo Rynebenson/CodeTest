@@ -9,7 +9,7 @@ import Search from '../../components/Search';
 import Basket from '../../components/Basket';
 
 export default function Index(props) {
-    const [state] = useContext(Store)
+    const [state, dispatch] = useContext(Store)
 
     useEffect(() => {
         document.title = "Frank's Fine Cheeses"
@@ -27,8 +27,12 @@ export default function Index(props) {
             <Content>
                 <Search 
                     state={state}
+                    dispatch={dispatch}
                 />
-                <Basket />
+                <Basket 
+                    state={state}
+                    dispatch={dispatch}
+                />
             </Content>
             <Footer />
         </Wrapper>

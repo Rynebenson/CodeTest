@@ -86,6 +86,55 @@
                     text-decoration: line-through;
                 }
             }
+
+            .row.two {
+                .outOfStockMessage {
+                    font-family: "Cera Pro", sans-serif;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-align: center;
+                    color: $error;
+                    margin: 0;
+                }
+
+                .button {
+                    display: flex;
+                    align-items: center;
+                    margin: 30px auto 0;
+                    padding: 0 20px;
+                    border-radius: 100px;
+                    border: none;
+                    background: $athens;
+                    color: rgba(0, 0, 0, .54);
+                    height: 45px;
+                    cursor: pointer;
+                    outline: none;
+                    transition: all .2s ease-in-out;
+                    
+                    i {
+                        display: flex;
+                        font-size: 20px;
+                    }
+
+                    span {
+                        font-family: "Cera Pro", sans-serif;
+                        font-size: 14px;
+                        font-weight: bolder;
+                        margin-left: 10px;
+                    }
+                }
+                .button:hover {
+                    background: $goldenrod;
+                    color: #000;
+                }
+                .button.active {
+                    background: $carrot;
+                    color: #000;
+                }
+            }
+        }
+        .card.disabled {
+            background: rgba(255, 0, 0, .05)
         }
         .card:nth-last-child(1) {
             border-bottom: none;
