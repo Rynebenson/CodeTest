@@ -19,6 +19,16 @@ export default function Basket() {
         dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: false })
     }
 
+    function calculate_total() {
+        let sum = 0;
+
+        for(var i = 0; i < state.basket.length; i++) {
+            sum += calculate_price(state.basket[i].cheese.price, state.basket[i].percent_discount)
+        }
+
+        return sum
+    }
+
     return (
         <div className={`basket${state.basket_visibility ? ' visible' : ''}`}>
             <div className="container">
@@ -55,6 +65,11 @@ export default function Basket() {
                                 }
                             </div>
                             <div className="summary">
+                                <h1>Summary</h1>
+                                <div className="">
+                                    <h4>Total</h4>
+                                    <h3>${calculate_total()}</h3>
+                                </div>
                             </div>
                         </div>
                     ) : (

@@ -48,6 +48,16 @@
             animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
         }
 
+        .no-results {
+            font-family: "Cera Pro", sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: $silver;
+            text-align: center;
+            margin: 30px auto;
+            max-width: 500px;
+        }
+
         .card {
             border-bottom: 1px solid rgba(0, 0, 0, .05);
             padding: 20px 30px;
