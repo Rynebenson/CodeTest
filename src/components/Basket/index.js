@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { RiCloseLine } from 'react-icons/ri';
 import { Store } from '../../store';
 import { calculate_price } from '../../utils';
 
@@ -14,10 +15,15 @@ export default function Basket() {
         dispatch({ type: "REMOVE_FROM_BASKET", payload: id });
     }
 
+    function handleBasketClose() {
+        dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: false })
+    }
+
     return (
-        <div className={`basket`}>
+        <div className={`basket${state.basket_visibility ? ' visible' : ''}`}>
             <div className="container">
                 <h1>Basket</h1>
+                <button className="close" onClick={() => handleBasketClose()}><RiCloseLine /></button>
 
                 {
                     state.basket.length > 0 ? (

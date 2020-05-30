@@ -20,3 +20,9 @@ body {
     margin: 30px auto 0;
     padding: 0 30px;
 }
+
+@media only screen and (max-width: 500px) {
+    .content {
+        padding: 0 16px;
+    }
+}

@@ -5,7 +5,7 @@ import ZipCode from './zipcode';
 import Cart from './cart';
 
 export default function Header() {
-    const [state] = useContext(Store),
+    const [state, dispatch] = useContext(Store),
           [cartVisibility, setCartVisibility] = useState(false),
           cartNode = useRef()
 
@@ -32,6 +32,10 @@ export default function Header() {
         }
     }, [cartVisibility, handleClickOutside]);
 
+    function openBasket() {
+        dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: true })
+    }
+
     return (
         <header className="header">
             <nav className="nav">
@@ -42,6 +46,7 @@ export default function Header() {
                     />
                     <Cart 
                         state={state}
+                        openBasket={openBasket}
                         cartNode={cartNode}
                         cartVisibility={cartVisibility}
                         setCartVisibility={setCartVisibility}

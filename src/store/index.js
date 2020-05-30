@@ -6,7 +6,8 @@ const initialState = {
     loading: true,
     zip: null,
     basket: [],
-    whitelist: []
+    whitelist: [],
+    basket_visibility: false
 }
 
 export const Store = createContext()

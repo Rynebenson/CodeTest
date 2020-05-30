@@ -94,7 +94,7 @@
                     font-weight: bold;
                     text-align: center;
                     color: $error;
-                    margin: 0;
+                    margin: 15px 0 0;
                 }
 
                 .button {
@@ -143,5 +143,11 @@
         .card:nth-last-child(1) {
             border-bottom: none;
         }
+    }
+}
+
+@media only screen and (max-width: 968px) {
+    .search {
+        margin-right: 0;
     }
 }

@@ -16,6 +16,8 @@ export const Reducer = (state, action) => {
             let whitelist_clone = state.whitelist.filter(item => item !== action.payload)
             
             return { ...state, basket: clone, whitelist: whitelist_clone }
+        case "UPDATE_BASKET_VISIBILITY":
+            return { ...state, basket_visibility: action.payload }
         default:
             return state;
     }
