@@ -18,6 +18,15 @@ export default (props) => {
           cookies = new Cookies(),
           zip = cookies.get("zip");
 
+    /**
+     * Check for zip code in cookies
+     * 
+     *     - If found, set the zip code in global store
+     *     - If not found, set loader to false
+     * 
+     * @param {String} zip
+     * 
+     */
     useEffect(() => {
         async function checkZip() {
             if(zip) {
@@ -30,6 +39,9 @@ export default (props) => {
         checkZip()
     }, [zip])
 
+    // React, by design, will render initially before we can get the zip from cookies.
+    // Using a loader here will stop our application from rendering the following routes
+    // while we check for zip code in cookies.
     if(state.loading) return <div></div>
     return (
         <Store.Provider value={[state, dispatch]}>

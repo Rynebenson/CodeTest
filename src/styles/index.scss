@@ -1,10 +1,10 @@
 @import "./colors.scss";
-@import "./zipcode.scss";
-@import "./home.scss";
-@import "./basket.scss";
-@import "./search.scss";
-@import "./header.scss";
-@import "./footer.scss";
+@import "../views/GetZipCode/styles.scss";
+@import "../views/Index/styles.scss";
+@import "../components/Basket/styles.scss";
+@import "../components/Search/styles.scss";
+@import "../components/Header/styles.scss";
+@import "../components/Footer/styles.scss";
 @import "./animations.scss";
 
 body {
