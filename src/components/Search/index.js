@@ -26,6 +26,11 @@ export default function Search(props) {
     const [search, setSearch] = useState(""),
           [fetchCheese, { loading, data }] = useLazyQuery(GET_CHEESE)
 
+    /**
+     * Get initial list of cheeses
+     * 
+     * @param {String} props.state.zip
+     */
     useEffect(() => {
         fetchCheese({ variables: { filter: props.state.zip } })
     }, [fetchCheese, props.state.zip])
@@ -36,11 +41,6 @@ export default function Search(props) {
      * @param {*} event
      */
     function handleSearchChange(event) {
-        if(!event.target.value) {
-            setSearch("")
-            fetchCheese({ variables: { filter: props.state.zip } }); return
-        }
-
         setSearch(event.target.value)
         query(event.target.value)
     }
@@ -78,13 +78,15 @@ export default function Search(props) {
                     onChange={handleSearchChange}
                     autoComplete="off"
                 />
-            </div>
-            <div className="results">
                 {
                     loading && (
-                        <div className="spinner"></div>
+                        <div className="loader">
+                            <div className="spinner"></div>
+                        </div>
                     )
                 }
+            </div>
+            <div className="results">
                 {
                     data &&
                     data.specials && !loading &&
