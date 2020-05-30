@@ -80,10 +80,6 @@ export default function Search(props) {
         props.dispatch({ type: "ADD_TO_BASKET", payload: data });
     }
 
-    if(searchData) {
-        console.log(searchData)
-    }
-
     return (
         <div className="search">
             <div className="input">
