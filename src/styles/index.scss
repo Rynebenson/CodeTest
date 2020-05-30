@@ -12,6 +12,17 @@ body {
     background: #fff;
 }
 
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+.wrapper.no-scroll {
+    overflow: hidden;
+}
 .content {
     display: flex;
     align-items: flex-start;
