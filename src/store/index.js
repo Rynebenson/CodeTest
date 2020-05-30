@@ -7,7 +7,8 @@ const initialState = {
     zip: null,
     basket: [],
     whitelist: [],
-    basket_visibility: false
+    basket_visibility: false,
+    sum: 0
 }
 
 export const Store = createContext()
@@ -19,8 +20,6 @@ export default (props) => {
 
     useEffect(() => {
         async function checkZip() {
-            console.log(zip)
-
             if(zip) {
                 dispatch({ type: "UPDATE_ZIP", payload: zip }); return;
             }

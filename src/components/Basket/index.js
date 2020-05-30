@@ -11,22 +11,12 @@ export default function Basket() {
      * 
      * @param {Integer} index 
      */
-    function handleRemove(id) {
-        dispatch({ type: "REMOVE_FROM_BASKET", payload: id });
+    function handleRemove(obj) {
+        dispatch({ type: "REMOVE_FROM_BASKET", payload: obj });
     }
 
     function handleBasketClose() {
         dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: false })
-    }
-
-    function calculate_total() {
-        let sum = 0;
-
-        for(var i = 0; i < state.basket.length; i++) {
-            sum += calculate_price(state.basket[i].cheese.price, state.basket[i].percent_discount)
-        }
-
-        return sum
     }
 
     return (
@@ -48,17 +38,17 @@ export default function Basket() {
                                                     <h2 className="country">{item.cheese.country}</h2>
                                                 </div>
                                                 <div>
-                                                <h3 className={`price${item.percent_discount > 0 ? ' discounted' : ''}`}>${item.cheese.price}</h3>
+                                                <h3 className={`price${item.percent_discount > 0 ? ' discounted' : ''}`}>${item.cheese.price.toFixed(2)}</h3>
                                                 {
                                                     item.percent_discount > 0 && (
-                                                        <h3 className="price">${calculate_price(item.cheese.price, item.percent_discount)}</h3>
+                                                        <h3 className="price">${calculate_price(item.cheese.price, item.percent_discount).toFixed(2)}</h3>
                                                     )
                                                 }
                                                 </div>
                                                 
                                             </div>
                                             <div className="row two">
-                                                <button className="remove" onClick={() => handleRemove(item._id)}>Remove</button>
+                                                <button className="remove" onClick={() => handleRemove(item)}>Remove</button>
                                             </div>
                                         </div>
                                     ))
@@ -68,8 +58,9 @@ export default function Basket() {
                                 <h1>Summary</h1>
                                 <div className="">
                                     <h4>Total</h4>
-                                    <h3>${calculate_total()}</h3>
+                                    <h3>${state.sum.toFixed(2)}</h3>
                                 </div>
+                                <button className="checkout">Checkout</button>
                             </div>
                         </div>
                     ) : (

@@ -14,7 +14,7 @@ export default function Card(props) {
                     <h3 className={`price${props.data.percent_discount > 0 ? ' discounted' : ''}`}>${(props.data.cheese.price.toFixed(2))}</h3>
                     {
                         props.data.percent_discount > 0 && (
-                            <h3 className="price">${calculate_price(props.data.cheese.price, props.data.percent_discount)}</h3>
+                            <h3 className="price">${calculate_price(props.data.cheese.price, props.data.percent_discount).toFixed(2)}</h3>
                         )
                     }
                 </div>

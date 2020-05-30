@@ -8,6 +8,8 @@
     .container {
         position: relative;
         padding: 0 30px;
+        max-width: 500px;
+        margin: 0 auto;
 
         h1 {
             font-family: "Cera Pro", sans-serif;
@@ -98,6 +100,47 @@
             .summary {
                 border-top: 1px solid rgba(0, 0, 0, .05);
                 padding: 30px 0;
+
+                h1 {
+                    font-size: 20px;
+                }
+
+                div {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    margin-top: 16px;
+
+                    h4 {
+                        font-family: "Cera Pro", sans-serif;
+                        font-size: 18px;
+                        font-weight: normal;
+                        margin: 0;
+                    }
+                    
+                    h3 {
+                        font-family: "Cera Pro", sans-serif;
+                        font-size: 20px;
+                        font-weight: bold;
+                        margin: 0;
+                    }
+                }
+
+                .checkout {
+                    font-family: "Cera Pro", sans-serif;
+                    font-weight: bolder;
+                    font-size: 14px;
+                    border-radius: 100px;
+                    background: $carrot;
+                    color: $black;
+                    border: none;
+                    height: 45px;
+                    width: 100%;
+                    margin-top: 30px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+                    cursor: pointer;
+                    outline: none;
+                }
             }
         }
 

@@ -24,11 +24,11 @@ const GET_CHEESE = gql`
 
 export default function Search(props) {
     const [search, setSearch] = useState(""),
-          [fetchCheese, { called, loading, data }] = useLazyQuery(GET_CHEESE)
+          [fetchCheese, { loading, data }] = useLazyQuery(GET_CHEESE)
 
     useEffect(() => {
         fetchCheese({ variables: { filter: props.state.zip } })
-    }, [fetchCheese])
+    }, [fetchCheese, props.state.zip])
 
     /**
      * Handle Search Change

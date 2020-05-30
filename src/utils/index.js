@@ -22,5 +22,5 @@ export function debounce(func, wait, immediate) {
 export function calculate_price(price, percent_discount) {
     let newPrice = price - (price * (percent_discount / 100))
     
-    return newPrice.toFixed(2)
+    return newPrice
 }
