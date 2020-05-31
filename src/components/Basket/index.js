@@ -1,30 +1,28 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { RiCloseLine } from 'react-icons/ri';
 import { Store } from '../../store';
 import Card from './card';
 import Summary from './summary';
 
-export default function Basket() {
-    const [state, dispatch] = useContext(Store)
-
+export default function Basket(props) {
     /**
      * Remove the item from basket
      * 
      * @param {Integer} index 
      */
     function handleItemRemoval(obj) {
-        dispatch({ type: "REMOVE_FROM_BASKET", payload: obj });
+        props.dispatch({ type: "REMOVE_FROM_BASKET", payload: obj });
     }
 
     /**
      * Close the basket modal
      */
     function closeBasketModal() {
-        dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: false })
+        props.dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: false })
     }
 
     return (
-        <div className={`basket${state.basket_visibility ? ' visible' : ''}`}>
+        <div className={`basket${props.state.basket_visibility ? ' visible' : ''}`}>
             <div className="container">
                 <div>
                     <h1>Basket</h1>
@@ -35,11 +33,11 @@ export default function Basket() {
                      * Display the items of our basket
                      *     - if 0 items, display empty message
                      */
-                    state.basket.length > 0 ? (
+                    props.state.basket.length > 0 ? (
                         <div className="contents">
                             <div className="list">
                                 {
-                                    state.basket.map((item, index) => (
+                                    props.state.basket.map((item, index) => (
                                         <Card
                                             key={index}
                                             id={item._id}
@@ -53,7 +51,7 @@ export default function Basket() {
                                 }
                             </div>
                             <Summary 
-                                sum={state.sum}
+                                sum={props.state.sum}
                             />
                         </div>
                     ) : (

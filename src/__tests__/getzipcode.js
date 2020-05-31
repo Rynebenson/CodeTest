@@ -84,11 +84,17 @@ describe("GetZipCode Component", () => {
                         specials: [
                             {
                                 "_id": "5ecf28c459d3781a2e99738e",
-                            },
-                            {
-                                "_id": "5ecf28c459d3781a2e99738f",
+                                "cheese": {
+                                  "_id": "4647",
+                                  "name": "Raschera",
+                                  "country": "Italy",
+                                  "price": 1.78
+                                },
+                                "zip": "91001",
+                                "percent_discount": 18,
+                                "out_of_stock": false
                             }
-                        ] 
+                        ]
                     }
                 }
             }
