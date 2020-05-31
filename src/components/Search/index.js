@@ -5,6 +5,12 @@ import { RiSearchLine } from 'react-icons/ri';
 import Card from './card';
 import { debounce } from '../../utils';
 
+/**
+ * GraphQL query that fetches appropriate specials from the server
+ *
+ * @param {String} filter
+ * @param {String} zip
+ */
 const GET_CHEESE = gql`
     query specials($filter: String, $zip: String) {
         specials(filter: $filter, zip: $zip) {
@@ -22,12 +28,13 @@ const GET_CHEESE = gql`
     }
 `;
 
+// Component that allows user to search cheeses by name, country and renders the following results
 export default function Search(props) {
     const [search, setSearch] = useState(""),
           [fetchCheese, { loading, data }] = useLazyQuery(GET_CHEESE)
 
     /**
-     * Get initial list of cheeses
+     * Get initial list of cheeses by calling graphql query
      * 
      * @param {String} props.state.zip
      */
@@ -36,9 +43,9 @@ export default function Search(props) {
     }, [fetchCheese, props.state.zip])
 
     /**
-     * Handle Search Change
+     * Handle search input
      * 
-     * @param {*} event
+     * @param {String} event.target.value
      */
     function handleSearchChange(event) {
         setSearch(event.target.value)
@@ -46,8 +53,10 @@ export default function Search(props) {
     }
 
     /**
+     * Debounce the call to graphql query so that it waits until user finishes typing
+     *    - debounce will significantly reduce the amount of calls to the server
      * 
-     * @param {*} data 
+     * @param {String} value 
      */
     const query = useCallback(
         debounce(value => {
@@ -56,14 +65,16 @@ export default function Search(props) {
     )
 
     /**
-     * Handle add to basket button click
+     * Add item to the user's basket
+     *    - items that are whitelisted are already in the basket so return.
+     *    - the button iself is disabled if whitelisted, but that can be changed via browser tools
      * 
      * @param {Object} item
      */
-    function addToBasket(data) {
-        if(props.state.whitelist.includes(data._id)) return
+    function addToBasket(item) {
+        if(props.state.whitelist.includes(item._id)) return
         
-        props.dispatch({ type: "ADD_TO_BASKET", payload: data });
+        props.dispatch({ type: "ADD_TO_BASKET", payload: item });
     }
 
     return (
