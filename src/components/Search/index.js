@@ -6,7 +6,7 @@ import Card from './card';
 import { debounce } from '../../utils';
 
 /**
- * GraphQL query that fetches appropriate specials from the server
+ * GraphQL query that fetches specials from the server
  *
  * @param {String} filter
  * @param {String} zip
@@ -99,14 +99,20 @@ export default function Search(props) {
             </div>
             <div className="results">
                 {
+                    /*
+                     * If there are more than 0 items map them and pass the special as a props.
+                     * If 0 items display empty results message
+                     */
                     data &&
-                    data.specials && !loading &&
                         data.specials.length > 0 ? 
-                            data.specials.map(special => (
+                            data.specials.map((special, index) => (
                                 <Card
-                                    key={special._id}
-                                    state={props.state}
-                                    data={special}
+                                    key={index}
+                                    whitelist={props.state.whitelist}
+                                    id={special._id}
+                                    cheese={special.cheese}
+                                    percent_discount={special.percent_discount}
+                                    out_of_stock={special.out_of_stock}
                                     addToBasket={addToBasket}
                                 />
                             ))
