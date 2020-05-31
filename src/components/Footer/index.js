@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/*
+ * Display the footer.
+ *    - This was not in the scope of the project. I included this because it added to the user experience.
+ *      Because of this I left the links blank.
+ */
 export default function Footer() {
     return (
         <footer className="footer">

@@ -7,7 +7,12 @@ import Cart from './cart';
 export default function Header() {
     const [state, dispatch] = useContext(Store)
 
-    function openBasket() {
+    /**
+     * If the window is less than 968px, set the basket visiblity to true.
+     * 
+     * @param {Integer} window.innerWidth
+     */
+    function openBasketModal() {
         if(window.innerWidth < 968) {
             dispatch({ type: "UPDATE_BASKET_VISIBILITY", payload: true })
         }
@@ -23,7 +28,7 @@ export default function Header() {
                     />
                     <Cart 
                         state={state}
-                        openBasket={openBasket}
+                        openBasketModal={openBasketModal}
                     />
                 </div>
             </nav>
