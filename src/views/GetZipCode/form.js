@@ -2,6 +2,7 @@ import React from 'react';
 import { RiCloseCircleLine, RiCheckboxCircleLine } from 'react-icons/ri';
 import { BsFillCaretUpFill } from 'react-icons/bs';
 
+// Display the form to capture user's zip code
 export default function Form(props) {
     return (
         <form className="form" onSubmit={props.handleSubmit}>
@@ -15,6 +16,7 @@ export default function Form(props) {
                     autoComplete="off"
                 />
                 {
+                    // if query has not been called don't display anything
                     props.called &&
                         props.data ?
                             props.data.specials.length > 0 ? (

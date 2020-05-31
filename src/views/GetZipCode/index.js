@@ -57,9 +57,13 @@ export default function GetZipCode(props) {
     }
 
     /**
-     * Handle Form Submission
+     * Handle form submission
+     *    - if no zipcode, do nothing (user's not in service area can't continue)
+     *    - if no data, do nothing (this stops user's from submitting the form before 
+     *      debounce function is called)
+     *    - if there are no specials, do nothing (not in a service area if there are not specials)
      * 
-     * @param {*} event 
+     * @param {*} event
      */
     async function handleSubmit(event) {
         event.preventDefault()
