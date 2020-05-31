@@ -5,7 +5,7 @@ import { Store } from '../../store';
 import Form from './form';
 import { debounce } from '../../utils';
 
-const GET_CHEESES = gql`
+export const GET_CHEESES = gql`
     query specials($zip: String) {
         specials(filter: $zip) {
             _id
@@ -32,7 +32,7 @@ export default function GetZipCode(props) {
     }, [])
 
     /**
-     * Verify is zip code is in service area
+     * Verify zip code is in service area
      * 
      * @param {String} value
      */
