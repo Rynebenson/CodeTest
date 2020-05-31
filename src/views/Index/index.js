@@ -8,6 +8,7 @@ import Footer from '../../components/Footer';
 import Search from '../../components/Search';
 import Basket from '../../components/Basket';
 
+// Display the home component
 export default function Index(props) {
     const [state, dispatch] = useContext(Store)
 

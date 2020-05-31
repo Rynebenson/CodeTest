@@ -1,3 +1,6 @@
+/**
+ * Debounce function
+ */
 export function debounce(func, wait, immediate) {
     var timeout;
     
@@ -19,6 +22,13 @@ export function debounce(func, wait, immediate) {
 	};
 };
 
+
+/**
+ * Return the price with discount applied
+ * 
+ * @param {Float} price 
+ * @param {Float} percent_discount 
+ */
 export function calculate_price(price, percent_discount) {
     let newPrice = price - (price * (percent_discount / 100))
     
