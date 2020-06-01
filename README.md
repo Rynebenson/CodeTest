@@ -1,4 +1,6 @@
-# This is the web application portion for a Code Test I was given for a job interview. 
+# Frank's Code Test
+
+## This is the web application portion of a project I was tasked for a job interview.
 
 To run this project you'll need the server portion as well. Run the following commands in your terminal to view the project locally.
 
