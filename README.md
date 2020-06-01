@@ -64,3 +64,11 @@ In your terminal tab containing the web application (FranksCodeTest) run this co
  `npm start`
  
 A new window should open shortly in your default browser running the project @ localhost:3000. 
+
+<a name="run-tests"></a>
+## 5. Run Tests
+
+In the terminal tab containing the web application (FranksCodeTest) run this command to run unit tests. A message will show in your terminal displaying the different test options. The command provided below will run all tests.
+
+ `npm run test`
+ `a`
