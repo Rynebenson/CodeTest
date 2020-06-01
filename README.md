@@ -44,12 +44,23 @@ Now open the second tab and run these commands to clone the server repository an
 <a name="run-server"></a>
 ## 3. Run the Server
 
-In the terminal tab containing the server run this command to get the server up and running.
+In the terminal tab containing the server (FranksCodeTestAPI) run this command to get the server up and running.
 
  `npm start`
  
-If it starts properly you should see these messages in the terminal:
+If it starts properly you should see these messages in the terminal: 
 
-- Server running...
+ `Server running...`
 
-- Connected to database...
+ `Connected to database...`
+ 
+By default the server will run on port 3001. If you have a process already running on that port you will have to kill that process or change the default port in the FranksCodeTestAPI/index.js file
+
+<a name="run-web-application"></a>
+## 4. Run the Web Application
+
+In your terminal tab containing the web application (FranksCodeTest) run this command to get the web app up and running.
+
+ `npm start`
+ 
+A new window should open shortly in your default browser running the project @ localhost:3000. 
