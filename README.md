@@ -1,10 +1,11 @@
 # Frank's Code Test
 
-This is the web application portion of a project I was tasked for a job interview.
+This is the web application portion of a code test project I was tasked with for a job interview.
 
 # Table of Contents
-1. [Create Root Directory]
+1. [Create Root Directory](#create-root-directory)
 
+<a name="create-root-directory"></a>
 ## 1. Create Root Directory
 
 Open your terminal and run these commands to create a root directory for the web application and server.
