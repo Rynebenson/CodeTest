@@ -4,6 +4,7 @@ import { MockedProvider } from '@apollo/react-testing';
 import wait from 'waait';
 import { Store } from '../store';
 import GetZipCode, { GET_CHEESES } from '../views/GetZipCode';
+import Message from '../views/GetZipCode/message';
 
 describe("GetZipCode Component", () => {
     let wrapper,
@@ -49,35 +50,11 @@ describe("GetZipCode Component", () => {
             expect(wrapper.find(submitButton).prop('disabled')).toBeFalsy()
         })
 
-        test("Invalid Service Area", async () => {
-            mock = {
-                request: {
-                    query: GET_CHEESES,
-                    variables: { zip: "30327" }
-                },
-                result: {
-                    data: { specials: [] }
-                }
-            }
-
-            wrapper = mount(
-                <MockedProvider mocks={[mock]} addTypename={false}>
-                    <Store.Provider value={[{ loading: false, zip: null }]}>
-                        <GetZipCode />
-                    </Store.Provider>
-                </MockedProvider>
-            )
-
-            await wait(0)
-
-            expect(wrapper.find(message).prop('data-id')).toEqual('invalid')
-        })
-
         test("Valid Service Area", async () => {
             mock = {
                 request: {
                     query: GET_CHEESES,
-                    variables: { zip: "91001" }
+                    variables: { zip: "30327" }
                 },
                 result: {
                     data: { 
@@ -94,7 +71,7 @@ describe("GetZipCode Component", () => {
                                 "percent_discount": 18,
                                 "out_of_stock": false
                             }
-                        ]
+                        ] 
                     }
                 }
             }
@@ -102,7 +79,10 @@ describe("GetZipCode Component", () => {
             wrapper = mount(
                 <MockedProvider mocks={[mock]} addTypename={false}>
                     <Store.Provider value={[{ loading: false, zip: null }]}>
-                        <GetZipCode />
+                        <Message
+                            called={true}
+                            data={mock.result.data}
+                        />
                     </Store.Provider>
                 </MockedProvider>
             )
@@ -110,5 +90,34 @@ describe("GetZipCode Component", () => {
             await wait(0)
 
             expect(wrapper.find(message).prop('data-id')).toEqual('valid')
+        })
+
+        test("Invalid Service Area", async () => {
+            mock = {
+                request: {
+                    query: GET_CHEESES,
+                    variables: { zip: "91001" }
+                },
+                result: {
+                    data: { 
+                        specials: []
+                    }
+                }
+            }
+
+            wrapper = mount(
+                <MockedProvider mocks={[mock]} addTypename={false}>
+                    <Store.Provider value={[{ loading: false, zip: null }]}>
+                        <Message
+                            called={true}
+                            data={mock.result.data}
+                        />
+                    </Store.Provider>
+                </MockedProvider>
+            )
+
+            await wait(0)
+
+            expect(wrapper.find(message).prop('data-id')).toEqual('invalid')
         })
 })
