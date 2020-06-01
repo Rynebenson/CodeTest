@@ -11,7 +11,7 @@ import { debounce } from '../../utils';
  * @param {String} filter
  * @param {String} zip
  */
-const GET_CHEESE = gql`
+export const GET_CHEESE = gql`
     query specials($filter: String, $zip: String) {
         specials(filter: $filter, zip: $zip) {
             _id

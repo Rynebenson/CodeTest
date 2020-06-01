@@ -8,7 +8,7 @@ describe("Basket Component", () => {
         state,
         dispatch = jest.fn();
 
-    test("Renders empty basket message", () => {
+    test("Renders Empty Basket Message", () => {
         state = {
             loading: false,
             zip: "91001",
@@ -27,7 +27,7 @@ describe("Basket Component", () => {
         expect(wrapper.find('p').hasClass('empty-message')).toBeTruthy()
     })
 
-    test("Renders contents with items in basket", () => {
+    test("Render Items", () => {
         state = {
             loading: false,
             zip: "91001",
@@ -59,7 +59,7 @@ describe("Basket Component", () => {
         expect(wrapper.find('div.item').length).toEqual(1)
     })
 
-    test("Removing item from cart", () => {
+    test("Remove Item From Basket", () => {
         state = {
             loading: false,
             zip: "91001",
