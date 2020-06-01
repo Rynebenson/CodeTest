@@ -1,6 +1,8 @@
 # Frank's Code Test
 
-![Image of Zip Code Component](https://github.com/Rynebenson/FranksCodeTest/blob/master/src/assets/images/readmethumbnail.png)
+![Image One](https://github.com/Rynebenson/FranksCodeTest/blob/master/src/assets/images/readme1.png)
+
+![Image Two](https://github.com/Rynebenson/FranksCodeTest/blob/master/src/assets/images/readme2.png)
 
 This is the web application portion of a coding project I was tasked with for a full-stack development job interview.
 
