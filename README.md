@@ -4,6 +4,11 @@ This is the web application portion of a code test project I was tasked with for
 
 # Table of Contents
 1. [Create Root Directory](#create-root-directory)
+2. [Clone Repositories and Install Packages](#clone-repositories)
+3. [Install Packages](#install-packages)
+4. [Run Server](#run-server)
+5. [Run Web Application](#run-web-application)
+6. [Run Tests](#run-tests)
 
 <a name="create-root-directory"></a>
 ## 1. Create Root Directory
@@ -16,7 +21,12 @@ Open your terminal and run these commands to create a root directory for the web
  
  `cd CodeTest`
 
-Now clone the web application into that directory.
+<a name="clone-repositories"></a>
+## 2. Clone Repositories and Install Packages
+
+Open two tabs in your terminal under the root directory.
+
+In the first tab run these commands to clone this repository and install it's dependencies.
 
   `git clone https://github.com/Rynebenson/FranksCodeTest.git`
   
@@ -24,9 +34,7 @@ Now clone the web application into that directory.
   
   `npm install`
 
-Open another tab in your terminal. Make sure you are back in the root directory before you clone the server.
-
-Now clone the server into the directory.
+Now open the second tab and run these commands to clone the server repository and install it's dependencies.
 
   `git clone https://github.com/Rynebenson/FranksCodeTestAPI.git`
   
