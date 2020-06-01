@@ -5,7 +5,6 @@ This is the web application portion of a code test project I was tasked with for
 # Table of Contents
 1. [Create Root Directory](#create-root-directory)
 2. [Clone Repositories and Install Packages](#clone-repositories)
-3. [Install Packages](#install-packages)
 4. [Run Server](#run-server)
 5. [Run Web Application](#run-web-application)
 6. [Run Tests](#run-tests)
@@ -41,3 +40,4 @@ Now open the second tab and run these commands to clone the server repository an
   `cd FranksCodeTestAPI`
   
   `npm install`
+
