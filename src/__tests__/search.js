@@ -4,6 +4,7 @@ import { MockedProvider } from '@apollo/react-testing';
 import wait from 'waait';
 import { Store } from '../store';
 import Search, { GET_CHEESE } from '../components/Search';
+import Card from '../components/Search/card';
 
 describe("Search Component", () => {
     let wrapper,
@@ -84,7 +85,8 @@ describe("Search Component", () => {
     test("Render Items", async () => {
         state = {
             loading: false,
-            zip: "91001"
+            zip: "91001",
+            whitelist: "5ecf28c459d3781a2e99738e"
         }
 
         mock = {
@@ -118,7 +120,14 @@ describe("Search Component", () => {
         wrapper = mount(
             <MockedProvider mocks={[mock]}>
                 <Store.Provider value={[state, dispatch]}>
-                    <Search state={state} dispatch={dispatch} />
+                    <Card
+                        key={0}
+                        whitelist={state.whitelist}
+                        id={mock.result.data.specials[0]._id}
+                        cheese={mock.result.data.specials[0].cheese}
+                        percent_discount={mock.result.data.specials[0].percent_discount}
+                        out_of_stock={mock.result.data.specials[0].out_of_stock}
+                    />
                 </Store.Provider>
             </MockedProvider>
         )

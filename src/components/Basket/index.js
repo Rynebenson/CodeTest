@@ -1,6 +1,5 @@
 import React from 'react';
 import { RiCloseLine } from 'react-icons/ri';
-import { Store } from '../../store';
 import Card from './card';
 import Summary from './summary';
 
