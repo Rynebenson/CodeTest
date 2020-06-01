@@ -23,9 +23,9 @@ Open your terminal and run these commands to create a root directory for the web
 <a name="clone-repositories"></a>
 ## 2. Clone Repositories and Install Packages
 
-Open two tabs in your terminal under the root directory.
+Open your terminal under the root directory: CodeTest.
 
-In the first tab run these commands to clone this repository and install it's dependencies.
+Run these commands to clone this repository and install it's dependencies.
 
   `git clone https://github.com/Rynebenson/FranksCodeTest.git`
   
@@ -33,33 +33,19 @@ In the first tab run these commands to clone this repository and install it's de
   
   `npm install`
 
-Now open the second tab and run these commands to clone the server repository and install it's dependencies.
-
-  `git clone https://github.com/Rynebenson/FranksCodeTestAPI.git`
-  
-  `cd FranksCodeTestAPI`
-  
-  `npm install`
-
 <a name="run-server"></a>
 ## 3. Run the Server
 
-In the terminal tab containing the server (FranksCodeTestAPI) run this command to get the server up and running.
+To get the web application fully functional you will have to get the server portion running. The instructions to do this can be found here:
 
- `npm start`
- 
-If it starts properly you should see these messages in the terminal: 
-
- `Server running...`
-
- `Connected to database...`
- 
-By default the server will run on port 3001. If you have a process already running on that port you will have to kill that process or change the default port in the FranksCodeTestAPI/index.js file
+  [https://github.com/Rynebenson/FranksCodeTestAPI/blob/master/README.md]
+  
+You can skip the first step as it was already done here.
 
 <a name="run-web-application"></a>
 ## 4. Run the Web Application
 
-In your terminal tab containing the web application (FranksCodeTest) run this command to get the web app up and running.
+Now with the server running head back to your terminal tab containing the web application (FranksCodeTest) and run this command to get the web app up and running.
 
  `npm start`
  
