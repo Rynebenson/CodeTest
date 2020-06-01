@@ -1,4 +1,6 @@
-This is the web application portion for a Code Test I was given for a job interview. To run this project you'll need the server portion as well. Run the following commands in your terminal to view the project locally.
+# This is the web application portion for a Code Test I was given for a job interview. 
+
+To run this project you'll need the server portion as well. Run the following commands in your terminal to view the project locally.
 
 I suggest creating a root directory for both the web app and server.
 
