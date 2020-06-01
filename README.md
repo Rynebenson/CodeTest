@@ -16,7 +16,7 @@ Now clone the web application into that directory.
   
   `npm install`
 
-Open another tab in your terminal. Make sure you are back in your root direction: CodeTest
+Open another tab in your terminal. Make sure you are back in the root directory before you clone the server.
 
 Now clone the server into the directory.
 
