@@ -1,13 +1,13 @@
 # Frank's Code Test
 
-This is the web application portion of a code test project I was tasked with for a job interview.
+This is the web application portion of a coding project I was tasked with for a full-stack development job interview.
 
 # Table of Contents
 1. [Create Root Directory](#create-root-directory)
 2. [Clone Repositories and Install Packages](#clone-repositories)
-4. [Run Server](#run-server)
-5. [Run Web Application](#run-web-application)
-6. [Run Tests](#run-tests)
+3. [Run Server](#run-server)
+4. [Run Web Application](#run-web-application)
+5. [Run Tests](#run-tests)
 
 <a name="create-root-directory"></a>
 ## 1. Create Root Directory
@@ -41,3 +41,15 @@ Now open the second tab and run these commands to clone the server repository an
   
   `npm install`
 
+<a name="run-server"></a>
+## 3. Run the Server
+
+In the terminal tab containing the server run this command to get the server up and running.
+
+ `npm start`
+ 
+If it starts properly you should see these messages in the terminal:
+
+- Server running...
+
+- Connected to database...
